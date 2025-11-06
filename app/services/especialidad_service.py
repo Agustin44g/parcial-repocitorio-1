@@ -1,5 +1,5 @@
-from app.models import Especialidad
-from app.repositories import EspecialidadRepository
+from app.models import Especialidad, Alumno, Facultad
+from app.repositories import EspecialidadRepository, AlumnoRepository
 
 class EspecialidadService:
 
@@ -30,3 +30,17 @@ class EspecialidadService:
     @staticmethod
     def borrar_por_id(id: int) -> bool:
         return EspecialidadRepository.borrar_por_id(id)
+    @staticmethod
+    def buscar_alumnos_por_especialidad(id: int) -> dict:
+        especialidad = EspecialidadRepository.buscar_por_id(id)
+        if not especialidad:
+            return None
+        
+        facultad = especialidad.facultad 
+        
+        alumnos = AlumnoRepository.buscar_por_especialidad_id(id)
+        
+        return {
+            "facultad": facultad,
+            "alumnos": alumnos
+        }

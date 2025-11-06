@@ -25,7 +25,7 @@ class CargoTestCase(unittest.TestCase):
         cargo = nuevocargo()
         self.assertIsNotNone(cargo)
         self.assertIsNotNone(cargo.nombre)
-        self.assertGreaterEqual(cargo.nombre, "Profesor")
+        self.assertEqual(cargo.nombre, "Profesor")
         self.assertEqual(cargo.categoria_cargo.nombre, "Docente")
         self.assertEqual(cargo.tipo_dedicacion.nombre, "Dedicacion Completa")
 
@@ -55,4 +55,3 @@ class CargoTestCase(unittest.TestCase):
         self.assertTrue(borrado)
         resultado = CargoService.buscar_por_id(cargo.id)
         self.assertIsNone(resultado)
-    

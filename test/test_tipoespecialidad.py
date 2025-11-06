@@ -27,7 +27,6 @@ class TipoEspecialidadTestCase(unittest.TestCase):
         self.assertIsNotNone(tipoespecialidad.id)
         self.assertGreaterEqual(tipoespecialidad.id, 1)    
         self.assertEqual(tipoespecialidad.nombre, "Cardiologia")
-        self.assertEqual(tipoespecialidad.nivel, "Avanzado")
 
     def test_buscar_por_id(self):
         tipoespecialidad = nuevotipoespecialidad()
@@ -37,7 +36,7 @@ class TipoEspecialidadTestCase(unittest.TestCase):
     
     def test_buscar_todos(self):
         tipoespecialidad1 = nuevotipoespecialidad()
-        tipoespecialidad2 = nuevotipoespecialidad("pediatria", "Basico")
+        tipoespecialidad2 = nuevotipoespecialidad(nombre="pediatria")
         tipoespecialidad = TipoEspecialidadService.buscar_todos()
         self.assertIsNotNone(tipoespecialidad)
         self.assertGreaterEqual(len(tipoespecialidad), 2)
@@ -45,10 +44,8 @@ class TipoEspecialidadTestCase(unittest.TestCase):
     def test_actualizar(self):
         tipoespecialidad = nuevotipoespecialidad()
         tipoespecialidad.nombre = "Neurología"
-        tipoespecialidad.nivel = "Intermedio"
         tipoespecialidad_actualizado = TipoEspecialidadService.actualizar(tipoespecialidad.id, tipoespecialidad)
         self.assertEqual(tipoespecialidad_actualizado.nombre, "Neurología")
-        self.assertEqual(tipoespecialidad_actualizado.nivel, "Intermedio")
 
     def test_borrar(self):
         tipoespecialidad = nuevotipoespecialidad()

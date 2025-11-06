@@ -35,3 +35,7 @@ class AlumnoRepository:
         db.session.delete(alumno)
         db.session.commit()
         return True
+
+    @staticmethod
+    def buscar_por_especialidad_id(especialidad_id: int) -> list[Alumno]:
+        return db.session.query(Alumno).filter_by(especialidad_id=especialidad_id).all()

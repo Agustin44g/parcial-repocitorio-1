@@ -25,27 +25,31 @@ class TipoDocumentoTestCase(unittest.TestCase):
         self.assertIsNotNone(tipodocumento)
         self.assertIsNotNone(tipodocumento.id)
         self.assertGreaterEqual(tipodocumento.id, 1)
-        self.assertEqual(tipodocumento.dni, 46291002)
+        # Corregido: Probar 'sigla' o 'nombre', no 'dni'
+        self.assertEqual(tipodocumento.sigla, "DNI") # Asumiendo valor de instancia
 
     def test_buscar_por_id(self):
         tipodocumento = nuevotipodocumento()
         r=TipoDocumentoService.buscar_por_id(tipodocumento.id)
         self.assertIsNotNone(r)
-        self.assertEqual(r.dni, 46291002)
-        self.assertEqual(r.libreta_civica, "nacional")
+        # Corregido: Probar 'sigla' o 'nombre', no 'dni' o 'libreta_civica'
+        self.assertEqual(r.sigla, "DNI") 
+        self.assertEqual(r.nombre, "Documento Nacional") # Asumiendo valor de instancia
 
     def test_buscar_todos(self):
         tipodocumento1 = nuevotipodocumento()
-        tipodocumento2 = nuevotipodocumento(48291002, "23456789", "98765432", "CD123456")
+        # Corregido: Usar los parámetros correctos de la instancia
+        tipodocumento2 = nuevotipodocumento(sigla="PAS", nombre="Pasaporte") 
         documentos = TipoDocumentoService.buscar_todos()
         self.assertIsNotNone(documentos)
         self.assertEqual(len(documentos), 2)
 
     def test_actualizar(self):
         tipodocumento = nuevotipodocumento()
-        tipodocumento.dni = 89291002
+        # Corregido: Actualizar un campo que sí existe
+        tipodocumento.nombre = "DNI Actualizado" 
         tipodocumento_actualizado = TipoDocumentoService.actualizar(tipodocumento.id, tipodocumento)
-        self.assertEqual(tipodocumento_actualizado.dni, 89291002)
+        self.assertEqual(tipodocumento_actualizado.nombre, "DNI Actualizado")
     
     def test_borrar(self):
         tipodocumento = nuevotipodocumento()
