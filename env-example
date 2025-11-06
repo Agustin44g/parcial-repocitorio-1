@@ -1,3 +1,15 @@
+# SQLALCHEMY_TRACK_MODIFICATIONS = False
+# SQLALCHEMY_RECORD_QUERIES = True
+# TEST_DATABASE_URI='postgresql+psycopg2://usuario:password@localhost:5432/TEST_SYSACAD'
+# DEV_DATABASE_URI='postgresql+psycopg2://usuario:password@localhost:5432/DEV_SYSACAD'
+# PROD_DATABASE_URI='postgresql://usuario:password@localhost:5432/SYSACAD'
+# Claves secretas requeridas por config.py
+SECRET_KEY='una-llave-secreta-muy-fuerte-para-flask'
+HASHIDS_SALT='mi-salt-secreto-para-hashids'
+HASHIDS_MIN_LENGTH=6
+HASHIDS_ALPHABET='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890'
+
+# Variables de Base de Datos (las que ya tenías)
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 SQLALCHEMY_RECORD_QUERIES = True
 TEST_DATABASE_URI='postgresql+psycopg2://usuario:password@localhost:5432/TEST_SYSACAD'

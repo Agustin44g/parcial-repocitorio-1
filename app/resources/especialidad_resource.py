@@ -2,9 +2,12 @@ from flask import jsonify, Blueprint, request
 
 from app.mapping.especialidad_mapping import EspecialidadMapping
 from app.services.especialidad_service import EspecialidadService
+from app.mapping.especialidad_detalle_mapping import EspecialidadDetalleMapping
 
 especialidad_bp = Blueprint('especialidad', __name__)
 especialidad_mapping = EspecialidadMapping()
+especialidad_detalle_mapping = EspecialidadDetalleMapping()
+
 
 @especialidad_bp.route('/especialidad', methods=['GET'])
 def buscar_todos():
@@ -32,3 +35,11 @@ def actualizar(id):
 def borrar_por_id(id):
     EspecialidadService.borrar_por_id(id)
     return jsonify("Especialidad borrada exitosamente"), 200
+
+@especialidad_bp.route('/especialidad/<hashid:id>/alumnos', methods=['GET'])
+def buscar_alumnos_por_especialidad(id):
+    resultado = EspecialidadService.buscar_alumnos_por_especialidad(id)
+    if not resultado:
+        return jsonify({"error": "Especialidad no encontrada"}), 404
+        
+    return especialidad_detalle_mapping.dump(resultado), 200

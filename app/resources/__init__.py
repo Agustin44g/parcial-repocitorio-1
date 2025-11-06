@@ -8,7 +8,7 @@ from .categoriacargo_resource import categoriacargo_bp
 from .grupo_resource import grupo_bp
 from .departamento_resource import departamento_bp
 from .certificado_resource import certificado_bp
-from.tipoespecialidad_resource import tipo_especialidad_bp
+from .tipoespecialidad_resource import tipo_especialidad_bp
 from .plan_resource import plan_bp
 from .cargo_resource import cargo_bp
 from .alumno_resource import alumno_bp

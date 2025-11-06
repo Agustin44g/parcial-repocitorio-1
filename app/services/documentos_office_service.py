@@ -3,7 +3,7 @@ from io import BytesIO
 import os
 from flask import current_app, render_template, url_for
 from python_odt_template import ODTTemplate
-from weasyprint import HTML
+#from weasyprint import HTML
 from python_odt_template.jinja import get_odt_renderer
 from docxtpl import DocxTemplate
 import jinja2

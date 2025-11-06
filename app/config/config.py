@@ -23,7 +23,7 @@ class TestConfig(Config):
     TESTING = True
     DEBUG = True
     SQLALCHEMY_TRACK_MODIFICATIONS = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URI')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('TEST_DATABASE_URI','sqlite:///test.db')
     
 class DevelopmentConfig(Config):
     TESTING = True
